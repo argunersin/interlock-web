@@ -17,6 +17,9 @@
         .btn-launch { background: transparent; border: 1px solid var(--neon-cyan); color: var(--neon-cyan); padding: 8px 16px; border-radius: 5px; cursor: pointer; text-decoration: none; font-weight: bold; font-size: 13px; transition: 0.3s; }
         .btn-launch:hover { background: var(--neon-cyan); color: var(--bg-dark); box-shadow: 0 0 15px var(--neon-cyan); }
 
+        /* CANLI BORSA ŞERİDİ ALANI */
+        .ticker-container { margin-bottom: 20px; border-radius: 10px; overflow: hidden; border: 1px solid #1f2937; }
+
         .grid-top { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 20px; }
         .panel { background-color: var(--panel-bg); border: 1px solid #1f2937; border-radius: 10px; padding: 20px; position: relative; overflow: hidden; }
         .panel h3 { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; letter-spacing: 1px; }
@@ -36,19 +39,42 @@
 </head>
 <body>
 
-    <!-- Üst Bar -->
+    <!-- Üst Bar (Neon-Carbon yazısı kaldırıldı!) -->
     <header>
-        <div class="brand">NEON-CARBON // INTERLOCK GLOBAL</div>
+        <div class="brand">INTERLOCK GLOBAL // SYSTEM TERMINAL</div>
         <div class="stats-header">
-            CPU: <span>24%</span>
+            CPU: <span>18%</span>
             GLOBAL NODES: <span>47 / 3</span>
             SYS STATUS: <span style="color:#10b981;">ONLINE</span>
         </div>
-        <!-- Render'da az önce güncellediğimiz yazılım motorunun linkini buraya bağlıyoruz -->
-        <a href="https://interlock-site.onrender.com" target="_blank" class="btn-launch">SİSTEMİ BAŞLAT (LAUNCH SYSTEM)</a>
+        <!-- Buradaki adrese Render'daki kendi özel linkinizi yapıştırabilirsiniz -->
+        <a href="https://onrender.com" target="_blank" class="btn-launch">SİSTEMİ BAŞLAT (LAUNCH SYSTEM)</a>
     </header>
 
-    <!-- Üst Metrik Panelleri -->
+    <!-- TRADINGVIEW CANLI BORSA VE EMTİA AKIŞ ŞERİDİ ENTEGRASYONU -->
+    <div class="ticker-container">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://tradingview.com" async>
+          {
+          "symbols": [
+            { "proName": "COMEX:ALI1!", "title": "LME Alüminyum Vadeli" },
+            { "proName": "NYMEX:CL1!", "title": "Brent/WTI Ham Petrol" },
+            { "proName": "NYBOT:SB1!", "title": "Şeker No:11 Vadeli" },
+            { "proName": "FX_IDC:USDTRAM", "title": "USD / TRY" }
+          ],
+          "colorTheme": "dark",
+          "isTransparent": false,
+          "showSymbolLogo": true,
+          "locale": "tr"
+        }
+          </script>
+        </div>
+        <!-- TradingView Widget END -->
+    </div>
+
+    <!-- Üst Grafik/Metrik Panelleri -->
     <div class="grid-top">
         <div class="panel">
             <h3>• KÜRESEL NAVLUN / LOJİSTİK AKIŞI</h3>
@@ -69,16 +95,16 @@
 
     <!-- Ana Kontrol Paneli İçeriği -->
     <div class="grid-main">
-        <!-- Canlı Akış -->
+        <!-- Sol Taraf: Canlı Akış Logları -->
         <div class="panel">
             <h3>• CANLI EMPTİA VE LOJİSTİK HAREKETLERİ (LIVE EVENT STREAM)</h3>
             <div class="log-stream">
-                <div class="log-line"><span>[20:32:15]</span> LME ALÜMİNYUM ENDEKSİ GÜNCELLENDİ: $3,145 / TON // TALEPLER AKTİF</div>
-                <div class="log-line"><span>[20:34:02]</span> MSC TESSA (IMO: 9930038) - SANTOS LİMANINDAN ÇIKIŞ YAPTI (ŞEKER YÜKLEMESİ)</div>
-                <div class="log-line"><span>[20:38:47]</span> KAZAKİSTAN - TÜRKİYE DEMİRYOLU HATTI GÜMRÜK KONTROLÜ TAMAMLANDI</div>
-                <div class="log-line"><span>[20:41:55]</span> NET NETWORK SECURE: interlockglobal.com // SSL ACTIVE</div>
-                <div class="log-line"><span>[20:44:12]</span> EN590 DİZEL YAKITI ROTTERDAM SEVKİYAT ONAYI VERİLDİ</div>
-                <div class="log-line"><span>[20:45:00]</span> AKREDİTİF (L/C) UCP 600 KONTROL MOTORU ÇALIŞTIRILDI - RİSK ORANI: %0</div>
+                <div class="log-line"><span>[22:04:15]</span> LME ALÜMİNYUM ENDEKSİ VERİ AKIŞI AKTİF // TALEPLER KONTROL EDİLİYOR</div>
+                <div class="log-line"><span>[22:06:02]</span> MSC TESSA (IMO: 9930038) - LOJİSTİK ROTA ANALİZİ BAŞLATILDI</div>
+                <div class="log-line"><span>[22:08:47]</span> KAZAKİSTAN - TÜRKİYE DEMİRYOLU HATTI GÜMRÜK KONTROLÜ AKTİF</div>
+                <div class="log-line"><span>[22:11:55]</span> NET NETWORK SECURE: interlockglobal.com // SSL ACTIVE</div>
+                <div class="log-line"><span>[22:14:12]</span> EN590 DİZEL YAKITI ROTTERDAM SEVKİYAT ONAYI VERİLDİ</div>
+                <div class="log-line"><span>[22:15:00]</span> AKREDİTİF (L/C) UCP 600 KONTROL MOTORU ÇALIŞTIRILDI - RİSK ORANI: %0</div>
             </div>
         </div>
 
