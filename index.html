@@ -8,118 +8,73 @@
         :root { --bg-dark: #0a0f1d; --panel-bg: #111827; --neon-cyan: #00f2fe; --text-main: #f3f4f6; --text-muted: #9ca3af; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Courier New', Courier, monospace; }
         body { background-color: var(--bg-dark); color: var(--text-main); padding: 20px; }
-        
         header { background-color: var(--panel-bg); padding: 20px; border-radius: 10px; border: 1px solid #1f2937; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
         .brand { font-size: 20px; font-weight: bold; color: var(--neon-cyan); letter-spacing: 2px; }
         .stats-header { font-size: 12px; color: var(--text-muted); }
         .stats-header span { color: var(--neon-cyan); margin-left: 10px; }
-
         .btn-launch { background: transparent; border: 1px solid var(--neon-cyan); color: var(--neon-cyan); padding: 8px 16px; border-radius: 5px; cursor: pointer; text-decoration: none; font-weight: bold; font-size: 13px; transition: 0.3s; }
         .btn-launch:hover { background: var(--neon-cyan); color: var(--bg-dark); box-shadow: 0 0 15px var(--neon-cyan); }
-
-        /* CANLI BORSA ŞERİDİ ALANI */
-        .ticker-container { margin-bottom: 20px; border-radius: 10px; overflow: hidden; border: 1px solid #1f2937; }
-
         .grid-top { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 20px; }
-        .panel { background-color: var(--panel-bg); border: 1px solid #1f2937; border-radius: 10px; padding: 20px; position: relative; overflow: hidden; }
-        .panel h3 { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; letter-spacing: 1px; }
+        .panel { background-color: var(--panel-bg); border: 1px solid #1f2937; border-radius: 10px; padding: 20px; }
+        .panel h3 { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; }
         .panel .value { font-size: 32px; font-weight: bold; color: var(--text-main); }
         .panel .sub { font-size: 11px; color: #10b981; margin-top: 5px; }
-
         .grid-main { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
-        @media (max-width: 900px) { .grid-main { grid-template-columns: 1fr; } }
-
-        .log-stream { height: 300px; overflow-y: auto; font-size: 12px; color: #34d399; line-height: 1.8; background-color: #070a13; padding: 15px; border-radius: 5px; border: 1px solid #1f2937; }
-        .log-line span { color: var(--text-muted); }
-
+        .log-stream { height: 200px; overflow-y: auto; font-size: 12px; color: #34d399; line-height: 1.8; background-color: #070a13; padding: 15px; border-radius: 5px; }
         .footer-banner { margin-top: 20px; background-color: var(--panel-bg); border: 1px solid #1f2937; border-radius: 10px; padding: 30px; text-align: center; }
         .footer-banner h2 { font-size: 24px; color: var(--neon-cyan); margin-bottom: 10px; }
-        .footer-banner p { color: var(--text-muted); font-size: 14px; max-width: 700px; margin: 0 auto 20px; }
     </style>
 </head>
 <body>
 
-    <!-- Üst Bar (Neon-Carbon yazısı kaldırıldı!) -->
     <header>
         <div class="brand">INTERLOCK GLOBAL // SYSTEM TERMINAL</div>
-        <div class="stats-header">
-            CPU: <span>18%</span>
-            GLOBAL NODES: <span>47 / 3</span>
-            SYS STATUS: <span style="color:#10b981;">ONLINE</span>
-        </div>
-        <!-- Buradaki adrese Render'daki kendi özel linkinizi yapıştırabilirsiniz -->
+        <div class="stats-header">SYS STATUS: <span style="color:#10b981;">ONLINE</span></div>
+        <!-- BUTON DOĞRUDAN SİZİN ÇALIŞAN RENDER SİTENİZE BAĞLANDI -->
         <a href="https://onrender.com" target="_blank" class="btn-launch">SİSTEMİ BAŞLAT (LAUNCH SYSTEM)</a>
     </header>
 
-    <!-- TRADINGVIEW CANLI BORSA VE EMTİA AKIŞ ŞERİDİ ENTEGRASYONU -->
-    <div class="ticker-container">
-        <!-- TradingView Widget BEGIN -->
-        <div class="tradingview-widget-container">
-          <div class="tradingview-widget-container__widget"></div>
-          <script type="text/javascript" src="https://tradingview.com" async>
-          {
-          "symbols": [
-            { "proName": "COMEX:ALI1!", "title": "LME Alüminyum Vadeli" },
-            { "proName": "NYMEX:CL1!", "title": "Brent/WTI Ham Petrol" },
-            { "proName": "NYBOT:SB1!", "title": "Şeker No:11 Vadeli" },
-            { "proName": "FX_IDC:USDTRAM", "title": "USD / TRY" }
-          ],
-          "colorTheme": "dark",
-          "isTransparent": false,
-          "showSymbolLogo": true,
-          "locale": "tr"
-        }
-          </script>
-        </div>
-        <!-- TradingView Widget END -->
+    <!-- TRADINGVIEW CANLI BORSA PANELİ -->
+    <div style="margin-bottom: 20px; border-radius: 10px; overflow: hidden; border: 1px solid #1f2937;">
+        <iframe src="https://tradingview.com" style="width: 100%; height: 80px; border: none;" scrolling="no"></iframe>
     </div>
 
-    <!-- Üst Grafik/Metrik Panelleri -->
     <div class="grid-top">
         <div class="panel">
-            <h3>• KÜRESEL NAVLUN / LOJİSTİK AKIŞI</h3>
+            <h3>• KÜRESEL NAVLUN AKIŞI</h3>
             <div class="value">2.4M t/sn</div>
-            <div class="sub">+18.4% AKTİF SEVKİYAT HACMİ</div>
+            <div class="sub">+18.4% AKTİF SEVKİYAT</div>
         </div>
         <div class="panel">
-            <h3>• AKTİF TAŞINAN EMPTİA TONAJI</h3>
+            <h3>• TAŞINAN EMTİA TONAJI</h3>
             <div class="value">847 TB</div>
-            <div class="sub" style="color:#ef4444;">92% KAPASİTE YOĞUNLUĞU</div>
+            <div class="sub" style="color:#ef4444;">92% KAPASİTE</div>
         </div>
         <div class="panel">
-            <h3>• ANLIK RİSK VE KOTA ALERTLERİ</h3>
+            <h3>• RİSK ALERTLERİ</h3>
             <div class="value">0</div>
-            <div class="sub">GÜVENLİ TİCARET KORİDORU</div>
+            <div class="sub">GÜVENLİ KORİDOR</div>
         </div>
     </div>
 
-    <!-- Ana Kontrol Paneli İçeriği -->
     <div class="grid-main">
-        <!-- Sol Taraf: Canlı Akış Logları -->
         <div class="panel">
-            <h3>• CANLI EMPTİA VE LOJİSTİK HAREKETLERİ (LIVE EVENT STREAM)</h3>
+            <h3>• CANLI LOG AKIŞI (LIVE STREAM)</h3>
             <div class="log-stream">
-                <div class="log-line"><span>[22:04:15]</span> LME ALÜMİNYUM ENDEKSİ VERİ AKIŞI AKTİF // TALEPLER KONTROL EDİLİYOR</div>
-                <div class="log-line"><span>[22:06:02]</span> MSC TESSA (IMO: 9930038) - LOJİSTİK ROTA ANALİZİ BAŞLATILDI</div>
-                <div class="log-line"><span>[22:08:47]</span> KAZAKİSTAN - TÜRKİYE DEMİRYOLU HATTI GÜMRÜK KONTROLÜ AKTİF</div>
-                <div class="log-line"><span>[22:11:55]</span> NET NETWORK SECURE: interlockglobal.com // SSL ACTIVE</div>
-                <div class="log-line"><span>[22:14:12]</span> EN590 DİZEL YAKITI ROTTERDAM SEVKİYAT ONAYI VERİLDİ</div>
-                <div class="log-line"><span>[22:15:00]</span> AKREDİTİF (L/C) UCP 600 KONTROL MOTORU ÇALIŞTIRILDI - RİSK ORANI: %0</div>
+                <div>[22:04:15] LME ALÜMİNYUM VERİ AKIŞI BAĞLANTISI AKTİF</div>
+                <div>[22:06:02] MSC TESSA (IMO: 9930038) - ROTA TAKİBİ BAŞLATILDI</div>
+                <div>[22:08:47] KAZAKİSTAN - TÜRKİYE LOJİSTİK HATTI ONAYLANDI</div>
             </div>
         </div>
-
-        <!-- Sağ Taraf: Kurumsal Bilgi Alanı -->
-        <div class="panel" style="display:flex; flex-direction:column; justify-content:center; text-align:center;">
-            <h3>• KÜRESEL OPERASYON MERKEZİ</h3>
-            <p style="font-size: 14px; margin-bottom: 15px; color: var(--text-muted);">Uluslararası emtia tedariğinde yapay zeka entegrasyonuyla otonom lojistik ve brokerlık yönetimi.</p>
-            <p style="font-size: 16px; font-weight: bold; color: var(--neon-cyan);">info@interlockglobal.com</p>
+        <div class="panel" style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
+            <h3>• OPERASYON MERKEZİ</h3>
+            <p style="color: var(--neon-cyan); font-weight: bold; margin-top: 10px;">info@interlockglobal.com</p>
         </div>
     </div>
 
-    <!-- Alt Tanıtım Bandı -->
     <div class="footer-banner">
-        <h2>Interlock Global Intelligence Architecture</h2>
-        <p>Geleneksel uluslararası ticaret süreçlerini modern veri altyapısıyla buluşturuyoruz. Brokerlık operasyonlarımızı, dökme yük lojistiğini ve evrak sahtecilik analizlerini bu dijital terminal üzerinden yönetiyoruz.</p>
+        <h2>Interlock Global Intelligence</h2>
+        <p style="color: var(--text-muted); margin-bottom: 15px;">Uluslararası ticaret süreçlerini siber veri altyapısıyla buluşturuyoruz.</p>
         <a href="mailto:info@interlockglobal.com" class="btn-launch">BİZİMLE İLETİŞİME GEÇİN</a>
     </div>
 
